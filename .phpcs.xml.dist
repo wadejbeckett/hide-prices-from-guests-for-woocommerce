@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<ruleset name="PriceCloak for WooCommerce">
+	<description>WordPress coding standard, PHP 8.1+.</description>
+	<file>.</file>
+	<exclude-pattern>vendor/*</exclude-pattern>
+	<exclude-pattern>node_modules/*</exclude-pattern>
+	<exclude-pattern>tests/Support/testcase-shim.php</exclude-pattern>
+	<arg name="extensions" value="php"/>
+	<arg name="colors"/>
+	<arg value="sp"/>
+	<config name="testVersion" value="8.1-"/>
+	<config name="minimum_wp_version" value="6.4"/>
+	<rule ref="WordPress">
+		<exclude name="WordPress.Files.FileName"/>
+		<exclude name="Universal.Arrays.DisallowShortArraySyntax"/>
+		<exclude name="Generic.Arrays.DisallowShortArraySyntax"/>
+	</rule>
+	<rule ref="PHPCompatibilityWP"/>
+
+	<!-- Tests are CLI/pure PHP: no docblock, escaping, prefix or filesystem rules. The stubs deliberately define WordPress function names. -->
+	<rule ref="Squiz.Commenting"><exclude-pattern>tests/*</exclude-pattern></rule>
+	<rule ref="Generic.Commenting"><exclude-pattern>tests/*</exclude-pattern></rule>
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals"><exclude-pattern>tests/*</exclude-pattern></rule>
+	<rule ref="WordPress.Security.EscapeOutput"><exclude-pattern>tests/*</exclude-pattern></rule>
+	<rule ref="WordPress.WP.AlternativeFunctions"><exclude-pattern>tests/*</exclude-pattern></rule>
+	<rule ref="WordPress.WP.GlobalVariablesOverride"><exclude-pattern>tests/*</exclude-pattern></rule>
+	<rule ref="Universal.NamingConventions.NoReservedKeywordParameterNames"><exclude-pattern>tests/*</exclude-pattern></rule>
+	<rule ref="Generic.CodeAnalysis.UnusedFunctionParameter"><exclude-pattern>tests/*</exclude-pattern></rule>
+	<!-- The REST stubs are one small file of two throwaway classes; splitting them would hide that. -->
+	<rule ref="Generic.Files.OneObjectStructurePerFile"><exclude-pattern>tests/*</exclude-pattern></rule>
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array">
+				<element value="pricecloak-for-woocommerce"/>
+			</property>
+		</properties>
+	</rule>
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+		<properties>
+			<property name="prefixes" type="array">
+				<element value="pricecloak"/>
+				<element value="PriceCloak"/>
+			</property>
+		</properties>
+	</rule>
+</ruleset>

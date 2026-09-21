@@ -1,0 +1,12 @@
+{
+	"core": "WordPress/WordPress#7.1",
+	"phpVersion": "8.1",
+	"plugins": [ ".", "https://downloads.wordpress.org/plugin/woocommerce.11.1.0.zip" ],
+	"config": {
+		"WP_DEBUG": true,
+		"SCRIPT_DEBUG": true
+	},
+	"lifecycleScripts": {
+		"afterStart": "wp-env run cli wp option update woocommerce_currency ZAR"
+	}
+}

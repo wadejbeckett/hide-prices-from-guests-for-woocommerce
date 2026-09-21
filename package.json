@@ -1,0 +1,16 @@
+{
+  "name": "pricecloak-for-woocommerce",
+  "private": true,
+  "license": "GPL-3.0-or-later",
+  "scripts": {
+    "env:start": "wp-env start",
+    "env:stop": "wp-env stop",
+    "env:clean": "wp-env clean all",
+    "seed": "WP_CMD=\"npx wp-env run --quiet cli wp\" bash tests/probe/seed.sh",
+    "probe": "python3 tests/probe/probe.py --base-url http://localhost:8888 --seed tests/probe/seed.json --expect visible",
+    "probe:hidden": "python3 tests/probe/probe.py --base-url http://localhost:8888 --seed tests/probe/seed.json --expect hidden"
+  },
+  "devDependencies": {
+    "@wordpress/env": "^10.0.0"
+  }
+}
